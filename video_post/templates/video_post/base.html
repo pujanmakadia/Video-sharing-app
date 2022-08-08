@@ -77,22 +77,22 @@
             <div class="col-md-4">
                 <br>
               <div class="content-section">
-                <h3>Your Followers ({{request.user.following.count}})</h3>
+                <h3>Your Followers ({{request.user.profile.followers.count}})</h3>
                 <p class='text-muted'>You can see all your followers here!
                   <div class="vertical-menu">
-                  {% for follower in request.user.following.all %}
-                    <a class="list-group-item list-group-item-light">{{follower}}</a>
+                  {% for following in request.user.profile.followers.all %}
+                    <a class="list-group-item list-group-item-light">{{following}}</a>
                   {% endfor %}
                   </div>
                 </p>
               </div>
                 <br>
               <div class="content-section">
-                <h3>Your Following ({{request.user.followers.count}})</h3>
+                <h3>Your Following ({{request.user.profile.following.count}})</h3>
                 <p class='text-muted'>You can see all the people you follow here!
                   <div class="vertical-menu">
-                  {% for following in request.user.followers.all %}
-                    <a class="list-group-item list-group-item-light">{{following}}</a>
+                  {% for follower in request.user.profile.following.all %}
+                    <a class="list-group-item list-group-item-light">{{follower}}</a>
                   {% endfor %}
                   </div>
                 </p>
