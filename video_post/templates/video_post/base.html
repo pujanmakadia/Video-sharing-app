@@ -81,7 +81,7 @@
                 <p class='text-muted'>You can see all your followers here!
                   <div class="vertical-menu">
                   {% for following in request.user.profile.followers.all %}
-                    <a class="list-group-item list-group-item-light">{{following}}</a>
+                    <a class="list-group-item list-group-item-light" href="{% url 'user-posts' following %}">{{following}}</a>
                   {% endfor %}
                   </div>
                 </p>
@@ -92,7 +92,7 @@
                 <p class='text-muted'>You can see all the people you follow here!
                   <div class="vertical-menu">
                   {% for follower in request.user.profile.following.all %}
-                    <a class="list-group-item list-group-item-light">{{follower}}</a>
+                    <a class="list-group-item list-group-item-light" href="{% url 'user-posts' follower %}">{{follower}}</a>
                   {% endfor %}
                   </div>
                 </p>
