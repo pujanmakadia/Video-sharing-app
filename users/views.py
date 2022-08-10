@@ -27,7 +27,7 @@ def profile(request):
     try:
         profile = request.user.profile
     except Profile.DoesNotExist:
-        profile = Profile(user=request.user)
+        profile = Profile.objects.create(user=request.user)
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES,

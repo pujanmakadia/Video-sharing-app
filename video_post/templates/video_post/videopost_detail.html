@@ -4,7 +4,7 @@
         <img class="rounded-circle article-img" src="{{ object.creator.profile.image.url }}" alt="image">
       <div class="media-body">
         <div class="article-metadata">
-          <a class="mr-2" href="{#}">{{ object.creator }}</a>
+          <a class="mr-2" href="{% url 'user-posts' object.creator %}">{{ object.creator }}</a>
           <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
             {% if object.creator == user %}
             <div>
