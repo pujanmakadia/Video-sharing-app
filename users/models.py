@@ -8,7 +8,10 @@ from django.contrib.auth import get_user_model
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(max_length=255, unique=True, null=True)
     email = models.EmailField(_('email address'), unique=True)
+    first_name = models.CharField(max_length=255, unique=False, null=True)
+    last_name = models.CharField(max_length=255, unique=False, null=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)

@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'django.contrib.sites',
+    'microsoft_auth',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,6 +67,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'microsoft_auth.context_processors.microsoft',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -70,6 +75,11 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'microsoft_auth.backends.MicrosoftAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend'
 ]
 
 WSGI_APPLICATION = 'video_sharing_project.wsgi.application'
@@ -80,8 +90,12 @@ WSGI_APPLICATION = 'video_sharing_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'video_sharing_project',
+       'USER': 'postgres',
+       'PASSWORD': 'postgres',
+       'HOST': 'localhost',
+       'PORT': '',
     }
 }
 
@@ -142,3 +156,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL')
 EMAIL_HOST_PASSWORD = config('APP_PASSWORD')
+
+
+MICROSOFT_AUTH_CLIENT_ID = "5f454037-3dea-4d0a-8f72-9d0617e7e6a6"
+MICROSOFT_AUTH_CLIENT_SECRET = "9kS8Q~gchXkD1vecJPouujw6QbdkV2seOn-OuaA8"
+MICROSOFT_AUTH_LOGIN_TYPE = 'ma'

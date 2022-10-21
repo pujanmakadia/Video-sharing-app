@@ -1,6 +1,6 @@
 {% extends "video_post/base.html" %}
 {% block content %}
-    <h1 class="mb-3">Posts by {{ other_user }} ({{ page_obj.paginator.count }})</h1>
+    <h1 class="mb-3">Posts by {{ other_user.username }} ({{ page_obj.paginator.count }})</h1>
     <hr>
     <form action="{% url 'follow' other_user.email %}" method="POST">
         {% csrf_token %}
@@ -16,7 +16,7 @@
             <img class="rounded-circle article-img" src="{{post.creator.profile.image.url}}" alt="image">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="{% url 'user-posts' post.creator %}">{{ post.author }}</a>
+              <a class="mr-2" href="{% url 'user-posts' post.creator %}">{{ post.creator.username }}</a>
               <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>

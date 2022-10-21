@@ -5,7 +5,7 @@
             <img class="rounded-circle article-img" src="{{video.creator.profile.image.url}}" alt="image">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="{% url 'user-posts' video.creator %}">{{ video.creator }}</a>
+              <a class="mr-2" href="{% url 'user-posts' video.creator %}">{{ video.creator.username }}</a>
               <small class="text-muted">{{ video.date_posted|date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'post-detail' video.id %}">{{ video.title }}</a></h2>
